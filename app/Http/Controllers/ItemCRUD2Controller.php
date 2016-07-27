@@ -13,6 +13,8 @@ use App\Item;
 
 use App\Seccio;
 
+Use DB;
+
 
 class ItemCRUD2Controller extends Controller
 
@@ -33,11 +35,16 @@ class ItemCRUD2Controller extends Controller
     {
         $this->addUserId($request);
         if($request['user_id']!=1){
-            $items = Item::orderBy('id','DESC')->where('user_id', $request['user_id'])->paginate(5);
+            $items =  DB::table('items')
+                ->join('seccios', 'seccios.id', '=', 'items.seccio_id')
+                ->join('users', 'users.id', '=', 'items.user_id')
+                ->select('items.*', 'seccios.title as titleSeccio', 'users.name as nom_usuari')->orderBy('id','DESC')->where('user_id', $request['user_id'])->paginate(5);
         }else{
-            $items = Item::orderBy('id','DESC')->paginate(5);
+            $items =  DB::table('items')
+                ->join('seccios', 'seccios.id', '=', 'items.seccio_id')
+                ->join('users', 'users.id', '=', 'items.user_id')
+                ->select('items.*', 'seccios.title as titleSeccio', 'users.name as nom_usuari')->orderBy('id','DESC')->paginate(5);
         }
-        return $items;
         return view('ItemCRUD2.index',compact('items'))
 
             ->with('i', ($request->input('page', 1) - 1) * 5);

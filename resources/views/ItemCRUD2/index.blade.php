@@ -48,6 +48,8 @@
 
             <th>Article</th>
 
+            <th>Autor</th>
+
             <th width="280px">Action</th>
 
         </tr>
@@ -56,11 +58,13 @@
 
             <tr>
 
-                <td>{{ $item->seccio_id }}</td>
+                <td>{{ $item->titleSeccio }}</td>
 
                 <td>{{ $item->title }}</td>
 
                 <td>{{ $item->description }}</td>
+
+                <td>{{ $item->nom_usuari }}</td>
 
                 <td>
 
