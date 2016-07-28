@@ -10,13 +10,13 @@
 
             <div class="pull-left">
 
-                <h2>Edit Role</h2>
+                <h2>Editar Seccio</h2>
 
             </div>
 
             <div class="pull-right">
 
-                <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('seccions.index') }}"> Back</a>
 
             </div>
 
@@ -44,7 +44,7 @@
 
     @endif
 
-    {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+    {!! Form::model($seccio, ['method' => 'PATCH','route' => ['roles.update', $seccio->id]]) !!}
 
     <div class="row">
 
@@ -54,7 +54,7 @@
 
                 <strong>Name:</strong>
 
-                {!! Form::text('display_name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                {!! Form::text('title', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
 
             </div>
 
@@ -67,28 +67,6 @@
                 <strong>Description:</strong>
 
                 {!! Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
-
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Permission:</strong>
-
-                <br/>
-
-                @foreach($permission as $value)
-
-                    <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-
-                        {{ $value->display_name }}</label>
-
-                    <br/>
-
-                @endforeach
 
             </div>
 

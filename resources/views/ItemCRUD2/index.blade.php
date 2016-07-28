@@ -10,7 +10,7 @@
 
             <div class="pull-left">
 
-                <h2>Items CRUD</h2>
+                <h2>Articles</h2>
 
             </div>
 

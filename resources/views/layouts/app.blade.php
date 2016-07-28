@@ -9,7 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Herald Vall de Lord</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
 
@@ -45,7 +45,7 @@
 
             <a class="navbar-brand" href="{{ url('/') }}">
 
-                Laravel
+                Herald la Vall de Lord
 
             </a>
 
@@ -60,12 +60,15 @@
                 <li><a href="{{ url('/home') }}">Home</a></li>
                 @role('admin')
 
-                    <li><a href="{{ route('users.index') }}">Users</a></li>
+                    <li><a href="{{ route('users.index') }}">Usuaris</a></li>
 
-                    <li><a href="{{ route('roles.index') }}">Roles</a></li>
+                    <li><a href="{{ route('roles.index') }}">Rols usuari</a></li>
+
+                    <li><a href="{{ route('seccions.index') }}">Seccions</a></li>
+
                 @endrole
                 @role(('admin') || ('escriptor'))
-                <li><a href="{{ route('itemCRUD2.index') }}">Items</a></li>
+                <li><a href="{{ route('itemCRUD2.index') }}">Articles</a></li>
                 @endrole
 
             </ul>

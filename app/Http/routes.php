@@ -69,4 +69,19 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::delete('itemCRUD2/{id}',['as'=>'itemCRUD2.destroy','uses'=>'ItemCRUD2Controller@destroy','middleware' => ['permission:item-delete']]);
 
+
+    Route::get('seccions',['as'=>'seccions.index','uses'=>'SeccionsController@index','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);
+
+    Route::get('seccions/create',['as'=>'seccions.create','uses'=>'SeccionsController@create','middleware' => ['permission:item-create']]);
+
+    Route::post('seccions/create',['as'=>'seccions.store','uses'=>'SeccionsController@store','middleware' => ['permission:item-create']]);
+
+    Route::get('seccions/{id}',['as'=>'seccions.show','uses'=>'SeccionsController@show']);
+
+    Route::get('seccions/{id}/edit',['as'=>'seccions.edit','uses'=>'SeccionsController@edit','middleware' => ['permission:item-edit']]);
+
+    Route::patch('seccions/{id}',['as'=>'seccions.update','uses'=>'SeccionsController@update','middleware' => ['permission:item-edit']]);
+
+    Route::delete('seccions/{id}',['as'=>'seccions.destroy','uses'=>'SeccionsController@destroy','middleware' => ['permission:item-delete']]);
+
 });

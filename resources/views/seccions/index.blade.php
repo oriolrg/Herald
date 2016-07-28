@@ -10,7 +10,7 @@
 
             <div class="pull-left">
 
-                <h2>Role Management</h2>
+                <h2>Seccions</h2>
 
             </div>
 
@@ -18,7 +18,7 @@
 
                 @permission('role-create')
 
-                <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+                <a class="btn btn-success" href="{{ route('seccions.create') }}"> Crear nova Secció</a>
 
                 @endpermission
 
@@ -52,29 +52,29 @@
 
         </tr>
 
-        @foreach ($roles as $key => $role)
+        @foreach ($seccions as $key => $seccio)
 
             <tr>
 
                 <td>{{ ++$i }}</td>
 
-                <td>{{ $role->display_name }}</td>
+                <td>{{ $seccio->title }}</td>
 
-                <td>{{ $role->description }}</td>
+                <td>{{ $seccio->description }}</td>
 
                 <td>
 
-                    <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('seccions.show',$seccio->id) }}">Show</a>
 
                     @permission('role-edit')
 
-                    <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('seccions.edit',$seccio->id) }}">Edit</a>
 
                     @endpermission
 
                     @permission('role-delete')
 
-                    {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                    {!! Form::open(['method' => 'DELETE','route' => ['seccions.destroy', $seccio->id],'style'=>'display:inline']) !!}
 
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
@@ -90,6 +90,6 @@
 
     </table>
 
-    {!! $roles->render() !!}
+    <!--{//!! $seccio->render() !!} -->
 
 @endsection
