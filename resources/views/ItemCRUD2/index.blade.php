@@ -46,6 +46,8 @@
 
             <th>Titol</th>
 
+            <th>Descripció</th>
+
             <th>Article</th>
 
             <th>Autor</th>
@@ -63,6 +65,8 @@
                 <td>{{ $item->title }}</td>
 
                 <td>{{ $item->description }}</td>
+
+                <td>{{ $item->contingut }}</td>
 
                 <td>{{ $item->nom_usuari }}</td>
 

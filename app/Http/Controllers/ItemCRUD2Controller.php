@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 
-use App\Item;
+use App\Article;
 
 use App\Seccio;
 
@@ -35,15 +35,15 @@ class ItemCRUD2Controller extends Controller
     {
         $this->addUserId($request);
         if($request['user_id']!=1){
-            $items =  DB::table('items')
-                ->join('seccios', 'seccios.id', '=', 'items.seccio_id')
-                ->join('users', 'users.id', '=', 'items.user_id')
-                ->select('items.*', 'seccios.title as titleSeccio', 'users.name as nom_usuari')->orderBy('id','DESC')->where('user_id', $request['user_id'])->paginate(5);
+            $items =  DB::table('articles')
+                ->join('seccios', 'seccios.id', '=', 'articles.seccio_id')
+                ->join('users', 'users.id', '=', 'articles.user_id')
+                ->select('articles.*', 'seccios.title as titleSeccio', 'users.name as nom_usuari')->orderBy('id','DESC')->where('user_id', $request['user_id'])->paginate(5);
         }else{
-            $items =  DB::table('items')
-                ->join('seccios', 'seccios.id', '=', 'items.seccio_id')
-                ->join('users', 'users.id', '=', 'items.user_id')
-                ->select('items.*', 'seccios.title as titleSeccio', 'users.name as nom_usuari')->orderBy('id','DESC')->paginate(5);
+            $items =  DB::table('articles')
+                ->join('seccios', 'seccios.id', '=', 'articles.seccio_id')
+                ->join('users', 'users.id', '=', 'articles.user_id')
+                ->select('articles.*', 'seccios.title as titleSeccio', 'users.name as nom_usuari')->orderBy('id','DESC')->paginate(5);
         }
         return view('ItemCRUD2.index',compact('items'))
 
@@ -94,7 +94,9 @@ class ItemCRUD2Controller extends Controller
 
             'title' => 'required',
 
-            'description' => 'required',
+            'description' => 'required|max:140',
+
+            'contingut' => 'required',
 
             'user_id' => 'required',
 
@@ -102,12 +104,12 @@ class ItemCRUD2Controller extends Controller
 
         ]);
 
-        Item::create($request->all());
+        Article::create($request->all());
 
 
         return redirect()->route('itemCRUD2.index')
 
-            ->with('success','Item created successfully');
+            ->with('success','Article creat correctament');
 
     }
 
@@ -128,7 +130,7 @@ class ItemCRUD2Controller extends Controller
 
     {
 
-        $item = Item::find($id);
+        $item = Article::find($id);
 
         return view('ItemCRUD2.show',compact('item'));
 
@@ -152,7 +154,7 @@ class ItemCRUD2Controller extends Controller
     {
         $seccions = Seccio::lists('title','id');
 
-        $item = Item::find($id);
+        $item = Article::find($id);
 
         return view('ItemCRUD2.edit',compact('item', 'seccions'));
 
@@ -181,12 +183,14 @@ class ItemCRUD2Controller extends Controller
 
             'title' => 'required',
 
-            'description' => 'required',
+            'description' => 'required|max:140',
+
+            'contingut' => 'required',
 
         ]);
 
 
-        Item::find($id)->update($request->all());
+        Article::find($id)->update($request->all());
 
 
         return redirect()->route('itemCRUD2.index')
@@ -224,7 +228,7 @@ class ItemCRUD2Controller extends Controller
 
     {
 
-        Item::find($id)->delete();
+        Article::find($id)->delete();
 
         return redirect()->route('itemCRUD2.index')
 

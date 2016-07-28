@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 
-class CreateItemsTable extends Migration
+class CreateArticlesTable extends Migration
 
 {
 
@@ -29,7 +29,11 @@ class CreateItemsTable extends Migration
 
             $table->string('title');
 
-            $table->text('description');
+            $table->text('description',140);
+
+            $table->text('contingut');
+
+            $table->text('path');
 
             $table->integer('user_id')->unsigned();
 
@@ -38,7 +42,7 @@ class CreateItemsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')
 
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('seccio_id')->references('id')->on('seccions')
+            $table->foreign('seccio_id')->references('id')->on('seccios')
 
                 ->onUpdate('cascade')->onDelete('cascade');
 
@@ -63,7 +67,7 @@ class CreateItemsTable extends Migration
 
     {
 
-        Schema::drop("items");
+        Schema::drop("articles");
 
     }
 

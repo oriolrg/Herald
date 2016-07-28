@@ -10,7 +10,7 @@
 
             <div class="pull-left">
 
-                <h2> Show Item</h2>
+                <h2> Mostrar Article</h2>
 
             </div>
 
@@ -30,9 +30,11 @@
 
             <div class="form-group">
 
-                <strong>Title:</strong>
+                <h2>
 
-                {{ $item->title }}
+                    {{ $item->title }}
+
+                </h2>
 
             </div>
 
@@ -42,9 +44,31 @@
 
             <div class="form-group">
 
-                <strong>Description:</strong>
+                <strong>
 
-                {{ $item->description }}
+                    {{ $item->description }}
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                {{ $item->contingut }}
+
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <img src="public/{{ $item->path }}">
 
             </div>
 

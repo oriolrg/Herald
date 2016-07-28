@@ -28,7 +28,7 @@
 
         <div class="alert alert-danger">
 
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <strong>Whoops!</strong> Hi ha algun problema amb les dades introduides.<br><br>
 
             <ul>
 
@@ -52,7 +52,7 @@
 
             <div class="form-group">
 
-                <strong>Title:</strong>
+                <strong>Titol:</strong>
 
                 {!! Form::text('title', null, array('placeholder' => 'Title','class' => 'form-control')) !!}
 
@@ -64,9 +64,21 @@
 
             <div class="form-group">
 
-                <strong>Description:</strong>
+                <strong>Descripció max 140 caracters:</strong>
 
                 {!! Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
+
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <strong>Contingut:</strong>
+
+                {!! Form::textarea('contingut', null, array('placeholder' => 'Contingut','class' => 'form-control','style'=>'height:100px')) !!}
 
             </div>
 

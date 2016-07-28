@@ -48,7 +48,7 @@ class CreateSeccionsTable extends Migration
 
     {
 
-        Schema::drop("items");
+        Schema::drop("seccios");
 
     }
 
