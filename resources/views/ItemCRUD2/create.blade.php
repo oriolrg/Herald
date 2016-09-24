@@ -88,7 +88,7 @@
 
             <div class="form-group">
 
-                <strong>Escull la secció a la que pertany l'article:</strong>
+                <strong>Escull una imatge maxim 2Mb:</strong>
 
                 {!! Form::file('path') !!}
 

@@ -44,7 +44,7 @@
 
     @endif
 
-    {!! Form::model($item, ['method' => 'PATCH','route' => ['itemCRUD2.update', $item->id]]) !!}
+    {!! Form::model($item, ['method' => 'PATCH', 'files' => true,'route' => ['itemCRUD2.update', $item->id]]) !!}
 
     <div class="row">
 
@@ -79,6 +79,20 @@
                 <strong>Contingut:</strong>
 
                 {!! Form::textarea('contingut', null, array('placeholder' => 'Contingut','class' => 'form-control','style'=>'height:100px')) !!}
+
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            <div class="form-group">
+
+                <img class="foto_article" src="/imageArticle/{{ $item->path }}">
+                <br>
+                <strong>Escull una imatge maxim 2Mb:</strong>
+
+                {!! Form::file('path') !!}
 
             </div>
 

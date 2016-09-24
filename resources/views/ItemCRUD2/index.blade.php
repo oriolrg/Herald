@@ -3,7 +3,6 @@
 
 
 @section('content')
-
     <div class="row">
 
         <div class="col-lg-12 margin-tb">
@@ -64,9 +63,9 @@
 
                 <td>{{ $item->title }}</td>
 
-                <td>{{ $item->description }}</td>
+                <td><span  id="#contingutDesccripcio">{{ $item->description }}</span></td>
 
-                <td>{{ $item->contingut }}</td>
+                <td><span  id="#contingutArticle">{{ $item->contingut }}</span></td>
 
                 <td>{{ $item->nom_usuari }}</td>
 

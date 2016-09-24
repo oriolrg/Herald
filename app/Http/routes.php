@@ -15,13 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('images/{filename}', function ($filename)
+{
+    $path = 'public/imageArticle/' . $filename;
+    if(!File::exists($path)) abort(404);
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
 Route::auth();
 
+Route::get('/', 'HomeController@index');
+
+Route::get('articles/consulta/{id}',['as'=>'itemCRUD2.show','uses'=>'ItemCRUD2Controller@show']);
+
 Route::group(['middleware' => ['auth']], function() {
-
-
-    Route::get('/home', 'HomeController@index');
-
 
     Route::resource('users','UserController');
 
@@ -55,20 +69,19 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
 
 
-    Route::get('itemCRUD2',['as'=>'itemCRUD2.index','uses'=>'ItemCRUD2Controller@index','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);
+    Route::get('articles',['as'=>'itemCRUD2.index','uses'=>'ItemCRUD2Controller@index','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);
 
-    Route::get('itemCRUD2/create',['as'=>'itemCRUD2.create','uses'=>'ItemCRUD2Controller@create','middleware' => ['permission:item-create']]);
+    Route::get('articles/create',['as'=>'itemCRUD2.create','uses'=>'ItemCRUD2Controller@create','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);
 
-    Route::post('itemCRUD2/create',['as'=>'itemCRUD2.store','uses'=>'ItemCRUD2Controller@store','middleware' => ['permission:item-create']]);
+    Route::post('articles/create',['as'=>'itemCRUD2.store','uses'=>'ItemCRUD2Controller@store','middleware' => ['permission:item-create']]);
 
-    Route::get('itemCRUD2/{id}',['as'=>'itemCRUD2.show','uses'=>'ItemCRUD2Controller@show']);
+    Route::get('articles/{id}/edit',['as'=>'itemCRUD2.edit','uses'=>'ItemCRUD2Controller@edit','middleware' => ['permission:item-edit']]);
 
-    Route::get('itemCRUD2/{id}/edit',['as'=>'itemCRUD2.edit','uses'=>'ItemCRUD2Controller@edit','middleware' => ['permission:item-edit']]);
+    Route::patch('articles/{id}',['as'=>'itemCRUD2.update','uses'=>'ItemCRUD2Controller@update','middleware' => ['permission:item-edit']]);
 
-    Route::patch('itemCRUD2/{id}',['as'=>'itemCRUD2.update','uses'=>'ItemCRUD2Controller@update','middleware' => ['permission:item-edit']]);
+    Route::delete('articles/{id}',['as'=>'itemCRUD2.destroy','uses'=>'ItemCRUD2Controller@destroy','middleware' => ['permission:item-delete']]);
 
-    Route::delete('itemCRUD2/{id}',['as'=>'itemCRUD2.destroy','uses'=>'ItemCRUD2Controller@destroy','middleware' => ['permission:item-delete']]);
-
+    Route::get('articles/{id}',['as'=>'itemCRUD2.show','uses'=>'ItemCRUD2Controller@show']);
 
     Route::get('seccions',['as'=>'seccions.index','uses'=>'SeccionsController@index','middleware' => ['permission:item-list|item-create|item-edit|item-delete']]);
 

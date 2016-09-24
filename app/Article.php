@@ -19,8 +19,14 @@ class Article extends Model
     }
     //mutador
     public function setpathAttribute($path){
-        $this->attributes['path'] = Carbon::now()->second.$path->getClientOriginalName();
-        $name = Carbon::now()->second.$path->getClientOriginalName();
-        \Storage::disk('local')->put($name, \File::get($path));
+        if(isset($path)==True){
+            $this->attributes['path'] = Carbon::now()->second.$path->getClientOriginalName();
+            $name = Carbon::now()->second.$path->getClientOriginalName();
+            //TODO controlar el tamany de la imatge i la possibilitat de nomes pujar imatges testing
+            //return $path;
+            //if(\File::size($path)<2000000){
+                \Storage::disk('local')->put($name, \File::get($path));
+            //}
+        }
     }
 }

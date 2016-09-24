@@ -44,7 +44,7 @@
 
     @endif
 
-    {!! Form::model($seccio, ['method' => 'PATCH','route' => ['roles.update', $seccio->id]]) !!}
+    {!! Form::model($seccio, ['method' => 'PATCH','route' => ['seccions.update', $seccio->id]]) !!}
 
     <div class="row">
 

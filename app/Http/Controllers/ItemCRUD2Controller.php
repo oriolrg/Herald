@@ -13,6 +13,8 @@ use App\Article;
 
 use App\Seccio;
 
+use App\User;
+
 Use DB;
 
 
@@ -102,6 +104,8 @@ class ItemCRUD2Controller extends Controller
 
             'seccio_id' => 'required',
 
+            'path'=>'image|mimes:jpeg,jpg,png,bmp,gif,svg|max:2000',
+
         ]);
 
         Article::create($request->all());
@@ -129,10 +133,15 @@ class ItemCRUD2Controller extends Controller
     public function show($id)
 
     {
+       $items =  DB::table('articles')
+                ->join('seccios', 'seccios.id', '=', 'articles.seccio_id')
+                ->join('users', 'users.id', '=', 'articles.user_id')
+                ->select('articles.*', 'seccios.title as titleSeccio', 'users.name as nom_usuari')->where('articles.id', $id)->orderBy('id','DESC');
 
         $item = Article::find($id);
-
-        return view('ItemCRUD2.show',compact('item'));
+        $seccio = Seccio::find($item['seccio_id']);
+        $user = User::find($item['user_id']);
+        return view('ItemCRUD2.show',compact('item', 'seccio', 'user'));
 
     }
 
@@ -178,6 +187,7 @@ class ItemCRUD2Controller extends Controller
     public function update(Request $request, $id)
 
     {
+        $this->addUserId($request);
 
         $this->validate($request, [
 
@@ -187,8 +197,13 @@ class ItemCRUD2Controller extends Controller
 
             'contingut' => 'required',
 
-        ]);
+            'user_id' => 'required',
 
+            'seccio_id' => 'required',
+
+            'path'=>'image|mimes:jpeg,jpg,png,bmp,gif,svg|max:2000',
+
+        ]);
 
         Article::find($id)->update($request->all());
 

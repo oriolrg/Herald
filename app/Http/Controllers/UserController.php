@@ -258,3 +258,5 @@ class UserController extends Controller
     }
 
 }
+
+//TODO solucionar registre usuaris i canvi contrassenya
