@@ -25,6 +25,17 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/retina-1.1.0.js')}}"></script>
+    <script src="{{asset('js/jquery.hoverdir.js')}}"></script>
+    <script src="{{asset('js/jquery.hoverex.min.js')}}"></script>
+    <script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
+    <script src="{{asset('js/jquery.isotope.min.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
     <![endif]-->
     <script src="{{asset('js/script.js')}}"></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
@@ -133,17 +144,7 @@
     </div><! --/footerwrap -->
 </div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/retina-1.1.0.js')}}"></script>
-<script src="{{asset('js/jquery.hoverdir.js')}}"></script>
-<script src="{{asset('js/jquery.hoverex.min.js')}}"></script>
-<script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
-<script src="{{asset('js/jquery.isotope.min.js')}}"></script>
-<script src="{{asset('js/custom.js')}}"></script>
+
 
 
 

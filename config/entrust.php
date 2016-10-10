@@ -55,14 +55,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Entrust permission_role Table
+    | Entrust permission_roles Table
     |--------------------------------------------------------------------------
     |
-    | This is the permission_role table used by Entrust to save relationship
+    | This is the permission_roles table used by Entrust to save relationship
     | between permissions and roles to the database.
     |
     */
-    'permission_role_table' => 'permission_role',
+    'permission_roles_table' => 'permission_roles',
 
     /*
     |--------------------------------------------------------------------------

@@ -62,9 +62,9 @@
 
             <div class="form-group">
 
-                <strong>Descripció max 140 caracters:</strong>
+                <strong>Descripció max 140 caracters:</strong><span id="caracters"></span>
 
-                <?php echo Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')); ?>
+                <?php echo Form::text('description', null, array('id' => 'description', 'placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')); ?>
 
 
             </div>

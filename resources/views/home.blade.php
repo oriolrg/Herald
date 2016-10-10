@@ -22,17 +22,17 @@
 
                         <div class="crop-img"  style="width: 100%; height: 250px;">
                             <div class="caption">
-                                <h6 class="titol">{{ $item->title }}</h6>
+                                <h6 class="titol">{{ $item->titleSeccio }}</h6>
                             </div>
                             <img style="width: 100%; height: 100%; margin:0 0 -133.3% 0;" src="/imageArticle/{{ $item->path }}" alt="">
                         </div>
                         <a href="articles/consulta/{{ $item->id }}">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
-                                    <h3 class="a1" data-animate="fadeInDown">{{ $item->titleSeccio }}</h3>
+                                    <h3 class="a1" data-animate="fadeInDown">{{ $item->title }}</h3>
                                     <!--<a data-rel="prettyPhoto" href="/img/portfolio/portfolio_10.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>
                                     <a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>
-                                    --><h4 class="a1" data-animate="fadeInDown"><span  id="#contingutDesccripcio">{{ $item->description }}</span></h4>
+                                    --><h4 class="a1" data-animate="fadeInDown"><summary><strong><span  id="#contingutDesccripcio">{{ $item->description }}</span></strong></summary></h4>
                                     <h7 class="a1" data-animate="fadeInDown">{{ $item->nom_usuari }}</h7>
                                 </div><!-- he bg -->
                             </div><!-- he view -->

@@ -73,11 +73,15 @@ class EntrustSetupTables extends Migration
         });
 
 
-        Schema::create('permission_role', function (Blueprint $table) {
+        Schema::create('permission_roless', function (Blueprint $table) {
 
             $table->integer('permission_id')->unsigned();
 
             $table->integer('role_id')->unsigned();
+
+            $table->dateTime('updated_at');
+
+            $table->dateTime('created_at');
 
 
             $table->foreign('permission_id')->references('id')->on('permissions')
@@ -110,7 +114,7 @@ class EntrustSetupTables extends Migration
 
     {
 
-        Schema::drop('permission_role');
+        Schema::drop('permission_roles');
 
         Schema::drop('permissions');
 

@@ -133,9 +133,9 @@ class RoleController extends Controller
 
         $role = Role::find($id);
 
-        $rolePermissions = Permission::join("permission_role","permission_role.permission_id","=","permissions.id")
+        $rolePermissions = Permission::join("permission_roless","permission_roles.permission_id","=","permissions.id")
 
-            ->where("permission_role.role_id",$id)
+            ->where("permission_roles.role_id",$id)
 
             ->get();
 
@@ -165,9 +165,9 @@ class RoleController extends Controller
 
         $permission = Permission::get();
 
-        $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id)
+        $rolePermissions = DB::table("permission_roles")->where("permission_roles.role_id",$id)
 
-            ->lists('permission_role.permission_id','permission_role.permission_id');
+            ->lists('permission_roles.permission_id','permission_roles.permission_id');
 
 
         return view('roles.edit',compact('role','permission','rolePermissions'));
@@ -213,7 +213,7 @@ class RoleController extends Controller
         $role->save();
 
 
-        DB::table("permission_role")->where("permission_role.role_id",$id)
+        DB::table("permission_roles")->where("permission_roles.role_id",$id)
 
             ->delete();
 

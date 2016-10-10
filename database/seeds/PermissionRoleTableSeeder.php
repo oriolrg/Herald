@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use DB;
+//use DB;
+use \App\permission_roles;
 class PermissionRoleTableSeeder extends Seeder
 {
     /**
@@ -90,7 +91,7 @@ class PermissionRoleTableSeeder extends Seeder
 
         foreach ($permissionRole as $key => $value) {
 
-            DB::table('permission_role')->create($value);
+            \App\permission_roles::create($value);
 
         }
 

@@ -120,9 +120,9 @@ class SeccionsController extends Controller
 
         $seccio = Seccio::find($id);
 
-        $rolePermissions = Permission::join("permission_role","permission_role.permission_id","=","permissions.id")
+        $rolePermissions = Permission::join("permission_roles","permission_roles.permission_id","=","permissions.id")
 
-            ->where("permission_role.role_id",$id)
+            ->where("permission_roles.role_id",$id)
 
             ->get();
 
@@ -152,9 +152,9 @@ class SeccionsController extends Controller
 
         $permission = Permission::get();
 
-        $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id)
+        $rolePermissions = DB::table("permission_roles")->where("permission_roles.role_id",$id)
 
-            ->lists('permission_role.permission_id','permission_role.permission_id');
+            ->lists('permission_roles.permission_id','permission_roles.permission_id');
 
 
         return view('seccions.edit',compact('seccio','permission','rolePermissions'));
